@@ -1,0 +1,15 @@
+version: '3.6'
+
+services:
+
+  openldap:
+    image: vladchernikov/openldap
+
+  phpldapadmin:
+    image: vladchernikov/phpldapadmin
+    volumes:
+      - ./config.php:/etc/phpldapadmin/config.php
+    links:
+      - openldap
+    ports:
+      - 80:80
